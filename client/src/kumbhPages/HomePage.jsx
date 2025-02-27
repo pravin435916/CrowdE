@@ -98,14 +98,15 @@ const HomePage = () => {
   return (
     <div className={`min-h-screen ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-amber-50 text-gray-800'} transition-colors duration-300`}>
       <Navigation isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
+        <image src={crowd} alt="Crowd" className=" inset-0 object-cover w-full h-screen z-50" />
       
       {/* Hero Section with Background Image */}
       <div className="relative pt-24 pb-32 px-6 flex flex-col items-center justify-center text-center">
         {/* Background Image with Overlay */}
-        <div className="absolute inset-0 bg-cover bg-center" style={{ 
+        {/* <div className="absolute inset-0 bg-cover bg-center" style={{ 
           backgroundImage: crowd,
           filter: "brightness(0.5)"
-        }}></div>
+        }}></div> */}
         
         {/* Content */}
         <div className="relative z-10 max-w-4xl mx-auto">

@@ -1,9 +1,8 @@
 import React from 'react'
-import HomePage from './pages/HomePage'
 
  const App = () => {
   return (
-   <HomePage />
+    <h1>App</h1>
   )
 }
 export default App;
