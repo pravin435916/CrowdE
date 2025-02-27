@@ -1,35 +1,28 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
+import LoginButton from "./components/LoginButton";
+import LogoutButton from "./components/LogoutButton";
+import Profile from "./components/Profile";
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
+  const { isLoading } = useAuth0();
+
+  if (isLoading) return <div className="text-center mt-8">Loading...</div>;
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div className="min-h-screen bg-gradient-to-b from-bhagva/10 to-white py-12 px-4">
+      <div className="max-w-4xl mx-auto text-center">
+        <h1 className="text-4xl font-bold text-bhagva mb-8">
+          Secure Authentication
+        </h1>
 
-export default App
+        <div className="flex gap-4 justify-center mb-8">
+          <LoginButton />
+          <LogoutButton />
+        </div>
+
+        <Profile />
+      </div>
+    </div>
+  );
+}
