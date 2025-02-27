@@ -377,7 +377,7 @@ const SkillsResults = ({ results }) => {
             </div>
             
             {/* React Flow Container */}
-            <div className="border border-gray-200 rounded-lg overflow-hidden" style={{ height: '1000px' }}>
+            <div className="border border-gray-200 rounded-lg overflow-hidden" style={{ height: '800px' }}>
               <SkillsFlowChart 
                 nodes={flowNodes} 
                 edges={flowEdges} 
