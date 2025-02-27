@@ -3,8 +3,9 @@ const cors = require('cors');
 const multer = require('multer');
 const path = require('path');
 const resumeRoutes = require('./routes/resumeRoutes');
-
+const mongoose = require('mongoose');
 const app = express();
+require('dotenv').config();
 const PORT = process.env.PORT || 5000;
 
 // Middleware
@@ -42,6 +43,10 @@ app.locals.upload = upload;
 
 // API Routes
 app.use('/api/resume', resumeRoutes);
+
+mongoose.connect(process.env.MONGODB_URI)
+  .then(() => console.log('Connected to MongoDB'))
+  .catch((error) => console.error('MongoDB connection error:', error));
 
 // Error handling middleware
 app.use((err, req, res, next) => {
