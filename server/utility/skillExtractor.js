@@ -52,10 +52,34 @@ const COMMON_SKILLS = [
     COMMON_SKILLS.forEach(skill => {
       const skillLower = skill.toLowerCase();
       
-      // Check if skill appears as a word boundary
-      const regex = new RegExp(`\\b${skillLower}\\b`, 'i');
-      if (regex.test(textLower)) {
-        extractedSkills.add(skill);
+      // Check if skill appears in the text
+      // Use string search instead of regex for skills with special characters
+      if (skillLower === 'c++') {
+        // Special case for C++
+        if (textLower.includes('c++')) {
+          extractedSkills.add(skill);
+        }
+      } else if (skillLower === 'c#') {
+        // Special case for C#
+        if (textLower.includes('c#')) {
+          extractedSkills.add(skill);
+        }
+      } else {
+        try {
+          // Escape any special regex characters in the skill name
+          const escapedSkill = skillLower.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+          // Check if skill appears as a word boundary
+          const regex = new RegExp(`\\b${escapedSkill}\\b`, 'i');
+          if (regex.test(textLower)) {
+            extractedSkills.add(skill);
+          }
+        } catch (error) {
+          console.warn(`Skipping regex check for skill '${skill}': ${error.message}`);
+          // Fallback to simple string includes check
+          if (textLower.includes(skillLower)) {
+            extractedSkills.add(skill);
+          }
+        }
       }
     });
     
