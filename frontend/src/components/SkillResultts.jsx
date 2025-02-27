@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { chatSession } from '../config/gemini';
 import SkillsFlowChart from './SkillsFlowChart'; // The component we'll create next
+import { Link } from 'react-router-dom';
 
 const SkillsResults = ({ results }) => {
   const [roadmap, setRoadmap] = useState(null);
@@ -8,7 +9,7 @@ const SkillsResults = ({ results }) => {
   const [flowEdges, setFlowEdges] = useState([]);
   const [loading, setLoading] = useState(false);
   const [activeView, setActiveView] = useState('skills'); // 'skills' or 'roadmap'
-  
+  const [localRoadMap, setLocalRoadMap] = useState(null);
   if (!results) return null;
   const { skills, name, email, phone } = results.data;
   
@@ -44,6 +45,8 @@ const SkillsResults = ({ results }) => {
           }
         ]
       }`;
+
+   
       
       const roadmapResult = await chatSession.sendMessage(roadmapPrompt);
       const roadmapText = roadmapResult?.response?.candidates?.[0]?.content?.parts?.[0]?.text;
@@ -55,6 +58,14 @@ const SkillsResults = ({ results }) => {
         const jsonString = jsonMatch ? jsonMatch[0] : roadmapText;
         parsedRoadmap = JSON.parse(jsonString);
         setRoadmap(parsedRoadmap);
+           // Store the roadmap data in localStorage
+        
+
+        // const localData = localStorage.getItem('roadmapData');
+        // const localMatch = localData.match(/(\{[\s\S]*\})/);
+        // const localJson = localMatch ? localMatch[0] : localData;
+        // localStorage.setItem('roadmapData',localJson);
+        // setLocalRoadMap(JSON.parse(localJson));
         
         // Generate flow chart data from the roadmap
         if (parsedRoadmap && parsedRoadmap.career_paths) {
@@ -223,6 +234,8 @@ const SkillsResults = ({ results }) => {
     setFlowNodes(nodes);
     setFlowEdges(edges);
   };
+
+  console.log(JSON.parse(localStorage.getItem("roadmapData")));
   
   return (
     <div className="bg-gradient-to-br from-white to-blue-50 p-8 rounded-xl shadow-lg mt-8 border border-blue-100">
@@ -468,6 +481,11 @@ const SkillsResults = ({ results }) => {
                         </svg>
                         Estimated timeline: {path.estimated_timeframe}
                       </span>
+                      <Link to={`/career-test/${path.title}`} state={{ data: path }}>
+                      <button className='text-blue-600 px-4 py-2 bg-blue-500 shadow-md rounded-lg text-white font-medium mt-2 hover:bg-blue-600 transition-colors cursor-pointer'>
+                        Test Now
+                      </button>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -502,6 +520,8 @@ const SkillsResults = ({ results }) => {
             Print Roadmap
           </button>
         )}
+
+        {/* <h5>{localStorage.getItem('roadmapData')}</h5> */}
       </div>
     </div>
   );
