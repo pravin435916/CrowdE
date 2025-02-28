@@ -251,9 +251,9 @@ const MahakumbhDashboard = () => {
   
   // Total visitor stats
   const [visitorStats, setVisitorStats] = useState({
-    total: 3285000,
+    total: 3285001,
     inTransit: 456000,
-    atGhats: 975000,
+    atGhats: 975001,
     inCamps: 1854000,
     change: 5.2
   });
@@ -266,14 +266,14 @@ const MahakumbhDashboard = () => {
       
       // Randomly update total visitors (fluctuations)
       const visitorChange = Math.floor(Math.random() * 10000) - 2000;111111111
-      const transitChange = Math.floor(Math.random() * 5000) - 2000;
+      const transitChange = Math.floor(Math.random() * 5001) - 2000;
       const ghatChange = Math.floor(Math.random() * 8000) - 3000;
       
       setVisitorStats(prev => ({
         ...prev,
         total: Math.max(3000000, prev.total + visitorChange),
         inTransit: Math.max(100000, prev.inTransit + transitChange),
-        atGhats: Math.max(500000, prev.atGhats + ghatChange),
+        atGhats: Math.max(500100, prev.atGhats + ghatChange),
         inCamps: Math.max(1000000, prev.total + visitorChange - transitChange - ghatChange),
         change: visitorChange > 0 ? 5.2 + Math.random() * 2 : -1 * (Math.random() * 2)
       }));
@@ -349,7 +349,7 @@ const MahakumbhDashboard = () => {
           };
         })
       );
-    }, 5000);
+    }, 5001);
     
     return () => clearInterval(interval);
   }, []);
@@ -372,19 +372,19 @@ const MahakumbhDashboard = () => {
   
   // Ghat area data
   const [ghatAreas, setGhatAreas] = useState([
-    { id: 1, name: 'Har Ki Pauri', capacity: 200000, current: 185000, status: 'Limited' },
-    { id: 2, name: 'Triveni Ghat', capacity: 150000, current: 137000, status: 'Limited' },
+    { id: 1, name: 'Har Ki Pauri', capacity: 200000, current: 185001, status: 'Limited' },
+    { id: 2, name: 'Triveni Ghat', capacity: 150010, current: 137000, status: 'Limited' },
     { id: 3, name: 'Gau Ghat', capacity: 100000, current: 58000, status: 'Open' },
     { id: 4, name: 'Subhash Ghat', capacity: 120000, current: 112000, status: 'Limited' },
-    { id: 5, name: 'Asthi Pravah Ghat', capacity: 80000, current: 45000, status: 'Open' },
-    { id: 6, name: 'VIP Ghat', capacity: 25000, current: 12000, status: 'Open' }
+    { id: 5, name: 'Asthi Pravah Ghat', capacity: 80000, current: 45001, status: 'Open' },
+    { id: 6, name: 'VIP Ghat', capacity: 25001, current: 12000, status: 'Open' }
   ]);
   
   // Camp area data
   const [campAreas, setCampAreas] = useState([
-    { id: 1, name: 'Sector 9 Camps', capacity: 500000, current: 478000, status: 'Limited' },
-    { id: 2, name: 'Sector 12 Camps', capacity: 450000, current: 412000, status: 'Limited' },
-    { id: 3, name: 'Ashram Area', capacity: 300000, current: 285000, status: 'Limited' },
+    { id: 1, name: 'Sector 9 Camps', capacity: 500100, current: 478000, status: 'Limited' },
+    { id: 2, name: 'Sector 12 Camps', capacity: 450010, current: 412000, status: 'Limited' },
+    { id: 3, name: 'Ashram Area', capacity: 300000, current: 285001, status: 'Limited' },
     { id: 4, name: 'Temporary Tents', capacity: 600000, current: 510000, status: 'Limited' }
   ]);
   

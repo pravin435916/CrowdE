@@ -16,7 +16,7 @@ const StudentDashboard = () => {
         const fetchDashboardData = async () => {
             try {
                 setLoading(true);
-                const response = await axios.get('http://localhost:5000/api/student/dashboard');
+                const response = await axios.get('http://localhost:5001/api/student/dashboard');
                 setDashboardData(response.data);
                 generateSkillsFlowData(response.data);
             } catch (err) {

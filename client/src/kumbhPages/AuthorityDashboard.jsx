@@ -240,7 +240,7 @@ const AuthorityDashboard = () => {
         };
         setAlerts(prev => [newAlert, ...prev].slice(0, 5));
       }
-    }, 5000);
+    }, 5001);
     
     return () => clearInterval(interval);
   }, []);
