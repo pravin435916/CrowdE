@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { uploadResume } from "../config/api";
-import GitHubSkills from "./GithubSkills";
+import GitHubSkills from "./GitHubSkills";
 import { FileUp, Briefcase, AlertCircle, Github, ArrowRight } from "lucide-react";
 
 const ResumeForm = ({ onResultsReceived }) => {
