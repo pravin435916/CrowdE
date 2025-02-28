@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const GitHubSkills = () => {
+export const GitHubSkills = () => {
   const [username, setUsername] = useState("");
   const [skills, setSkills] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -91,4 +91,4 @@ const GitHubSkills = () => {
   );
 };
 
-export default GitHubSkills;
+// export default GitHubSkills;
