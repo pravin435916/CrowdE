@@ -42,7 +42,7 @@ const GitHubSkills = () => {
       }
 
       setSkills(Array.from(skillSet));
-      localStorage.setItem("skills", JSON.stringify(Array.from(skillSet)));
+    //   localStorage.setItem("skills", JSON.stringify(Array.from(skillSet)));
     } catch (err) {
       setError(
         "Failed to fetch data. Check the GitHub username and try again."
@@ -51,6 +51,8 @@ const GitHubSkills = () => {
       setLoading(false);
     }
   };
+
+  console.log("skills",skills)
 
   return (
     <div className="flex flex-col items-start justify-start mt-4 w-full mx-auto ">

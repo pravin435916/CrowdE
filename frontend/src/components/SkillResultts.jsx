@@ -8,11 +8,18 @@ const SkillsResults = ({ results }) => {
   const [flowNodes, setFlowNodes] = useState([]);
   const [flowEdges, setFlowEdges] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [activeView, setActiveView] = useState('skills'); // 'skills' or 'roadmap'
-  const [localRoadMap, setLocalRoadMap] = useState(null);
+  const [activeView, setActiveView] = useState('skills'); 
   if (!results) return null;
   const { skills, name, email, phone } = results.data;
+  // console.log("local", localStorage.getItem('skills'));
+
+  // const storedSkills = localStorage.getItem('skills');
+  // const parsedSkills = storedSkills ? JSON.parse(storedSkills) : []; // Ensure it's an array
   
+  // const skills = parsedSkills.length > 0 ? parsedSkills : results.data?.skills || [];
+  // const name = results.data?.name || "Unknown Name";
+  // const email = results.data?.email || "No Email Provided";
+  // const phone = results.data?.phone || "No Phone Available";  
   // Group skills by category
   const skillCategories = {
     "Programming Languages": skills?.filter(skill =>

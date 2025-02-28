@@ -3,7 +3,7 @@ import Hero from './pages/Hero'
 import CourseAggregator from './components/CourseAggregator'
 import {BrowserRouter,Routes,Route} from 'react-router-dom'
 import ModernNavbar from './components/navigation/ModernNavbar'
-// import StudentDashboard from './components/dashboard/StudentDashboard'
+import StudentDashboard from './components/dashboard/StudentDashboard'
 import user from '../src/assets/user.jpg'
 import CareerTest from './components/CareerTest'
 import Gamification from './components/Gamification'
@@ -13,7 +13,7 @@ import ChatButton from './components/navigation/ChatButton'
   return (
     <BrowserRouter>
     <ModernNavbar 
-        userName="Sarah Johnson"
+        userName="Pravin Nandankar"
         userAvatar={user} 
         isDarkMode={isDarkMode}
         toggleDarkMode={() => setIsDarkMode(!isDarkMode)}
@@ -23,7 +23,7 @@ import ChatButton from './components/navigation/ChatButton'
       <Route path="/courses" element={<CourseAggregator />} />
       <Route path="/gamify" element={<Gamification />} />
       <Route path='/career-test/:title' element={<CareerTest />} />
-      {/* <Route path='/dashboard' element={<StudentDashboard />} /> */}
+      <Route path='/dashboard' element={<StudentDashboard />} />
     </Routes>
     <ChatButton />
     </BrowserRouter>
